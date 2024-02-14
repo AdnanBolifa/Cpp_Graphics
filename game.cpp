@@ -84,25 +84,32 @@ private:
     }
 
     void DrawAsteroids() {
-        for (int i = 0; i < MAX_ASTEROIDS; ++i) {
-            if (asteroids[i].active) {
-                switch (asteroids[i].type) {
-                    case SMALL:
-                        setcolor(RED);
-                        setfillstyle(SOLID_FILL, RED);
-                        circle(asteroids[i].position.x + ASTEROID_SIZE / 2, asteroids[i].position.y + ASTEROID_SIZE / 2, ASTEROID_SIZE / 2);
-                        floodfill(asteroids[i].position.x + ASTEROID_SIZE / 2, asteroids[i].position.y + ASTEROID_SIZE / 2, RED);
-                        break;
-                    case MEDIUM:
-                        // Draw medium asteroid
-                        break;
-                    case LARGE:
-                        // Draw large asteroid
-                        break;
-                }
+    for (int i = 0; i < MAX_ASTEROIDS; ++i) {
+        if (asteroids[i].active) {
+            switch (asteroids[i].type) {
+                case SMALL:
+                    setcolor(RED);
+                    setfillstyle(SOLID_FILL, RED);
+                    circle(asteroids[i].position.x + ASTEROID_SIZE / 2, asteroids[i].position.y + ASTEROID_SIZE / 2, ASTEROID_SIZE / 4);
+                    floodfill(asteroids[i].position.x + ASTEROID_SIZE / 2, asteroids[i].position.y + ASTEROID_SIZE / 2, RED);
+                    break;
+                case MEDIUM:
+                    setcolor(YELLOW);
+                    setfillstyle(SOLID_FILL, YELLOW);
+                    circle(asteroids[i].position.x + ASTEROID_SIZE / 2, asteroids[i].position.y + ASTEROID_SIZE / 2, ASTEROID_SIZE / 2);
+                    floodfill(asteroids[i].position.x + ASTEROID_SIZE / 2, asteroids[i].position.y + ASTEROID_SIZE / 2, YELLOW);
+                    break;
+                case LARGE:
+                    setcolor(GREEN);
+                    setfillstyle(SOLID_FILL, GREEN);
+                    circle(asteroids[i].position.x + ASTEROID_SIZE / 2, asteroids[i].position.y + ASTEROID_SIZE / 2, ASTEROID_SIZE);
+                    floodfill(asteroids[i].position.x + ASTEROID_SIZE / 2, asteroids[i].position.y + ASTEROID_SIZE / 2, GREEN);
+                    break;
             }
         }
     }
+}
+
 
     void DrawPowerUps() {
         for (int i = 0; i < MAX_POWER_UPS; ++i) {
